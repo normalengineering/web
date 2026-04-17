@@ -8,10 +8,10 @@ export default function Home() {
           Normal Engineering
         </h1>
         <p className="text-xl text-zinc-600 dark:text-zinc-400">
-          Reclaim your screen time.
+          It shouldn't cost anything to use your phone less.
         </p>
         <p className="text-sm text-zinc-500 dark:text-zinc-500">
-          Free. Open source. Privacy-focused. Forever.
+          Free. Open source. Privacy-focused.
         </p>
         <p className="mt-2 text-xs uppercase tracking-widest text-zinc-400 dark:text-zinc-600">
           Coming Soon
