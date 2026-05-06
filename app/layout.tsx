@@ -13,8 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Normal Engineering",
-  description: "Better, FOSS, Private Screentime Management",
+  title: "Normal — Free, Open Source Screen Time Blocker",
+  description:
+    "A powerful, privacy-focused screen time blocker for iOS. Free, open source, no data collection. Use any NFC tag or QR code to control your screen time.",
 };
 
 export default function RootLayout({
