@@ -16,13 +16,11 @@ const faqs: FAQEntry[] = [
     question: "Is Normal really free?",
     answer: (
       <div className="space-y-3">
-        <p>
-          Yes, it shouldn&apos;t cost anything to use your phone less.
-        </p>
+        <p>Yes, it shouldn&apos;t cost anything to use your phone less.</p>
         <p>
           Normal is 100% free with no in-app purchases, subscriptions, or hidden
-          fees. It&apos;s an open-source project and the source code is available
-          on GitHub for you to modify and tinker with.
+          fees. It&apos;s an open-source project and the source code is
+          available on GitHub for you to modify and tinker with.
         </p>
       </div>
     ),
@@ -31,8 +29,14 @@ const faqs: FAQEntry[] = [
     question: "Is it really privacy friendly?",
     answer: (
       <div className="space-y-3">
-        <p>We don&apos;t collect or sell any data. You can view the source code to verify this yourself.</p>
-        <p>There are no accounts, no internet connection required, and no data logging.</p>
+        <p>
+          We don&apos;t collect or sell any data. You can view the source code
+          to verify this yourself.
+        </p>
+        <p>
+          There are no accounts, no internet connection required, and no data
+          logging.
+        </p>
         <p>
           Normal uses Apple&apos;s Screen Time API and the Managed Settings
           framework to enforce app limits entirely on your device. All blocking
@@ -43,8 +47,7 @@ const faqs: FAQEntry[] = [
     ),
   },
   {
-    question:
-      "How does Normal fix bugs and improve without data collection?",
+    question: "How does Normal fix bugs and improve without data collection?",
     answer: (
       <div className="space-y-3">
         <p>
@@ -86,17 +89,70 @@ const faqs: FAQEntry[] = [
     answer: (
       <div className="space-y-3">
         <p>
-          Apple&apos;s Screen Time is easy to dismiss with a single tap.
+          <span className="text-white font-medium">Apple&apos;s Screen Time </span>
+          works on an opt-out basis. When you hit a limit, you&apos;re simply
+          asked whether to continue or not. It&apos;s easy to dismiss with a
+          single tap, easy to bypass with a passcode, and tedious to set up.
         </p>
-        <p>Normal is built to actually hold you accountable:</p>
+        <p>
+          <span className="text-white font-medium">Normal </span>takes an opt-in
+          approach. Apps you select are blocked by default. To use them, you
+          have to physically scan an NFC tag or QR code you&apos;ve placed
+          somewhere intentional.
+        </p>
         <ul className="list-disc list-inside space-y-1.5 pl-1">
-          <li>Stronger blocking mechanisms</li>
-          <li>Better scheduling options</li>
-          <li>
-            A focus on helping you build lasting habits, not just showing you
-            usage stats
-          </li>
+          <li>Stronger, harder-to-bypass blocking</li>
+          <li>Can be made completely impossible to bypass</li>
+          <li>As strict or as flexible as you choose</li>
         </ul>
+      </div>
+    ),
+  },
+  {
+    question: "How is Normal different from the other screen time apps?",
+    answer: (
+      <div className="space-y-4">
+        <p>
+          Aside from being completely free and open source, Normal is built to
+          be much stronger and better serve its purpose.
+        </p>
+        <div className="space-y-1">
+          <p className="text-white font-medium text-sm">Opt-in approach</p>
+          <p>
+            Most screen time apps use an opt-out approach, like Apple&apos;s
+            Screen Time, where you&apos;re asked to confirm each time you exceed
+            a limit. With Normal, selected apps are blocked by default. To use
+            them, you have to physically scan an NFC tag or QR code you&apos;ve
+            placed somewhere intentional.
+          </p>
+        </div>
+        <div className="space-y-1">
+          <p className="text-white font-medium text-sm">Physical layer</p>
+          <p>
+            However hard you make it to scan your key is however hard it is to
+            use your phone.
+          </p>
+        </div>
+        <div className="space-y-1">
+          <p className="text-white font-medium text-sm">Timed unblocks</p>
+          <p>
+            Other apps require you to manually reblock when you&apos;re done,
+            and users commonly report forgetting to reblock or falling back into
+            doom-scrolling. With Normal, set a timed unblock for 15 minutes and
+            you&apos;ll be automatically blocked again when it&apos;s up. Going
+            to an event where you need to stay reachable? Unblock for a few
+            hours and Normal handles the rest.
+          </p>
+        </div>
+        <div className="space-y-1">
+          <p className="text-white font-medium text-sm">App groups</p>
+          <p>
+            Only need to unblock Instagram to post quickly? Create an app group
+            for it. Select a 15-minute unblock and only the apps you need will
+            be available, no excuse to check anything else. Complete granular
+            control with Normal.
+          </p>
+        </div>
       </div>
     ),
   },
@@ -115,8 +171,8 @@ const faqs: FAQEntry[] = [
           <li>Bug reports</li>
         </ul>
         <p>
-          Head to our GitHub repository to get started, check out open issues, or
-          submit a pull request.
+          Head to our GitHub repository to get started, check out open issues,
+          or submit a pull request.
         </p>
       </div>
     ),
@@ -147,8 +203,8 @@ const faqs: FAQEntry[] = [
         <p>This is an Apple limitation, not a Normal one.</p>
         <p>
           Apple&apos;s Screen Time API is restrictive for privacy reasons. The
-          app-selection pop-over is made by Apple, not us, and is the only way to
-          select apps for Screen Time.
+          app-selection pop-over is made by Apple, not us, and is the only way
+          to select apps for Screen Time.
         </p>
         <p>Here&apos;s the technical reason:</p>
         <ul className="list-disc list-inside space-y-1.5 pl-1">
@@ -165,7 +221,7 @@ const faqs: FAQEntry[] = [
         </ul>
         <p>
           We require reselecting schedules and groups to ensure Normal&apos;s
-          groups, apps, and timed unlocks work consistently. We wish we could
+          groups, apps, and timed unblocks work consistently. We wish we could
           make this smoother, but Apple enforces this strictly to protect user
           privacy.
         </p>
@@ -239,8 +295,7 @@ const faqs: FAQEntry[] = [
                 <span className="text-white">Run Immediately</span>
               </li>
               <li>
-                Turn off{" "}
-                <span className="text-white">Notify When Run</span>
+                Turn off <span className="text-white">Notify When Run</span>
               </li>
             </ul>
             <p className="mt-2">
@@ -293,7 +348,9 @@ const faqs: FAQEntry[] = [
               <li>
                 After this setup, the only ways to disable Normal are:
                 <ul className="list-disc list-inside pl-5 mt-1.5 space-y-1">
-                  <li>Using an NFC or QR key you&apos;ve configured in Normal</li>
+                  <li>
+                    Using an NFC or QR key you&apos;ve configured in Normal
+                  </li>
                   <li>Resetting your device</li>
                 </ul>
               </li>
