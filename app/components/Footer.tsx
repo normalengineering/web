@@ -29,6 +29,9 @@ export default function Footer() {
           <a href="#privacy" className="hover:text-white transition-colors">
             Privacy
           </a>
+          <a href="#faq" className="hover:text-white transition-colors">
+            FAQ
+          </a>
           <a href="#contact" className="hover:text-white transition-colors">
             Contact
           </a>
