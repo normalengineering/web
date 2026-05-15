@@ -3,7 +3,7 @@
 import { useState, type ReactNode } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, HelpCircle } from "lucide-react";
+import { ChevronDown, HelpCircle, AlertTriangle } from "lucide-react";
 import { fadeInUp, containerVariants, itemVariants } from "./animations";
 
 interface FAQEntry {
@@ -89,7 +89,9 @@ const faqs: FAQEntry[] = [
     answer: (
       <div className="space-y-3">
         <p>
-          <span className="text-white font-medium">Apple&apos;s Screen Time </span>
+          <span className="text-white font-medium">
+            Apple&apos;s Screen Time{" "}
+          </span>
           works on an opt-out basis. When you hit a limit, you&apos;re simply
           asked whether to continue or not. It&apos;s easy to dismiss with a
           single tap, easy to bypass with a passcode, and tedious to set up.
@@ -237,6 +239,21 @@ const faqs: FAQEntry[] = [
           Yes! Fixing the Settings bypass is straightforward using Apple&apos;s
           Shortcuts app.
         </p>
+
+        <div className="rounded-xl border border-orange-500/30 bg-orange-500/10 p-4 text-sm">
+          <p className="flex items-center gap-2 font-semibold text-orange-400">
+            <AlertTriangle className="h-4 w-4 shrink-0" />
+            Proceed at your own risk
+          </p>
+          <p className="mt-1.5 text-orange-100/80">
+            Preventing the Settings bypass is possible, but with it in place the
+            only ways to turn off blocks are through Normal or resetting your
+            phone. If you lock yourself out of your apps, we are not
+            responsible, even if Normal stops working as expected. We are also
+            not responsible for any data loss if you have to reset your device
+            to regain access.
+          </p>
+        </div>
 
         <div className="space-y-6">
           <div className="space-y-2">
