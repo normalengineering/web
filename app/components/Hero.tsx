@@ -1,8 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SiGithub } from "react-icons/si";
-import { Code2, Smartphone } from "lucide-react";
+import { SiGithub, SiApple } from "react-icons/si";
+import { Code2 } from "lucide-react";
 import PhoneMockup from "./PhoneMockup";
 
 export default function Hero() {
@@ -23,19 +23,23 @@ export default function Hero() {
         <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] mb-6">
           Take back your{" "}
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">
-            screen time.
+            time.
           </span>
         </h1>
         <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
-          A powerful screen time blocker that&apos;s completely free, open
-          source, and private. No subscriptions. No paywalls. No data
-          collection.
+          A powerful app blocker that&apos;s completely free, open source, and
+          private. No subscriptions. No paywalls. No data collection.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <span className="inline-flex items-center gap-2 rounded-full bg-zinc-900/80 border border-zinc-800 px-5 py-3 text-sm text-zinc-300">
-            <Smartphone size={16} />
-            Coming Soon on App Store
-          </span>
+          <a
+            href="https://apps.apple.com/us/app/normal-screen-time-control/id6768861415"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-black hover:bg-zinc-200 transition-colors"
+          >
+            <SiApple size={16} />
+            Download on the App Store
+          </a>
           <a
             href="https://github.com/normalengineering/normal"
             target="_blank"
@@ -55,7 +59,7 @@ export default function Hero() {
       >
         <PhoneMockup
           src="/IMG_2424.PNG"
-          alt="Normal app — all selected apps blocked"
+          alt="Normal app - all selected apps blocked"
           size="large"
           priority
         />

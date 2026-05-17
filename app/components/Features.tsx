@@ -30,7 +30,7 @@ export default function Features() {
         bullets={[
           {
             icon: Nfc,
-            text: "Works with any NFC tag — AirTags, stickers, cards",
+            text: "Works with any NFC tag: AirTags, stickers, cards and more",
           },
           {
             icon: QrCode,
@@ -78,7 +78,7 @@ export default function Features() {
         phones={[
           {
             src: "/IMG_2419.PNG",
-            alt: "App Groups — Messaging, Socials, and Email",
+            alt: "App Groups: Messaging, Socials, Email, whatever you want!",
           },
         ]}
         reverse
@@ -140,7 +140,7 @@ export default function Features() {
           },
           {
             icon: Zap,
-            text: "Runs automatically — no daily effort required",
+            text: "Runs automatically, no daily effort required",
           },
         ]}
         phones={[

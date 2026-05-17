@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { SiGithub } from "react-icons/si";
-import { Smartphone } from "lucide-react";
+import { SiGithub, SiApple } from "react-icons/si";
 import { fadeInUp } from "./animations";
 
 export default function CTA() {
@@ -11,10 +10,15 @@ export default function CTA() {
       <div className="mx-auto max-w-3xl text-center">
         <motion.div {...fadeInUp}>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black">
-              <Smartphone size={16} />
-              Coming Soon on App Store
-            </span>
+            <a
+              href="https://apps.apple.com/us/app/normal-screen-time-control/id6768861415"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-medium text-black hover:bg-zinc-200 transition-colors"
+            >
+              <SiApple size={16} />
+              Download on the App Store
+            </a>
             <a
               href="https://github.com/normalengineering/normal"
               target="_blank"
