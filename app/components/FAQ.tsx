@@ -75,12 +75,12 @@ const faqSections: FAQSection[] = [
     title: "Getting Started & Setup",
     entries: [
       {
-        question: "What NFC tags and QR codes can I use?",
+        question: "What NFC tags, QR codes, and barcodes can I use?",
         answer: (
           <div className="space-y-4">
             <p>
-              Just about any NFC tag or QR code can be a key. Here are some
-              examples and tips on where to keep them.
+              Just about any NFC tag, QR code, or barcode can be a key. Here are
+              some examples and tips on where to keep them.
             </p>
 
             <div className="flex items-start gap-3 rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-sm">
@@ -89,7 +89,7 @@ const faqSections: FAQSection[] = [
                 <p className="font-semibold text-blue-300">Using an iPad?</p>
                 <p className="mt-1 text-blue-100/80">
                   This device can&apos;t scan NFC, so NFC tags won&apos;t work
-                  here. Use a QR code instead.
+                  here. Use a QR code or barcode instead.
                 </p>
               </div>
             </div>
@@ -97,8 +97,8 @@ const faqSections: FAQSection[] = [
             <div className="space-y-4">
               <KeyCard icon={Nfc} title="NFC tag examples">
                 <KeyFeature icon={Tag}>
-                  Almost any NFC tag works. AirTags, transit cards, amiibo, and
-                  even passports all have NFC chips you can use.
+                  Almost any NFC tag works. AirTags, amiibo, and even credit
+                  cards have NFC chips you can use.
                 </KeyFeature>
                 <KeyFeature icon={ShoppingCart}>
                   You can also buy packs of blank NFC tags online for very
@@ -111,21 +111,25 @@ const faqSections: FAQSection[] = [
                 </KeyFeature>
               </KeyCard>
 
-              <KeyCard icon={QrCode} title="QR code examples">
+              <KeyCard icon={QrCode} title="QR code or barcode examples">
                 <KeyFeature icon={FileText}>
-                  Any QR code works. You can print one on paper, put it on a
-                  sticker, or show it on a second device&apos;s screen.
+                  Any QR code or barcode works — even a product barcode off a
+                  snack wrapper. Print one on paper, put it on a sticker, or
+                  show it on a second device&apos;s screen.
                 </KeyFeature>
                 <KeyFeature icon={RefreshCw}>
-                  Normal reads the value inside the QR code. Use something you
-                  can recreate later if you lose it, or make it random so
-                  it&apos;s hard to reproduce.
+                  Normal reads the value inside the QR code or barcode. Use
+                  something you can recreate later if you lose it, or make it
+                  random so it&apos;s hard to reproduce.
                 </KeyFeature>
                 <div className="pt-1">
                   <p className="text-white font-medium text-sm mb-1.5">
-                    Generating one
+                    Getting one
                   </p>
                   <ul className="list-disc list-inside space-y-1.5 pl-1">
+                    <li>
+                      Any product barcode, like one off a snack wrapper or book
+                    </li>
                     <li>Any free &quot;QR code generator&quot; website</li>
                     <li>
                       The Shortcuts app&apos;s &quot;Generate QR Code&quot;
@@ -152,6 +156,32 @@ const faqSections: FAQSection[] = [
                 </p>
               </KeyCard>
             </div>
+          </div>
+        ),
+      },
+      {
+        question: "Are any NFC tags not supported?",
+        answer: (
+          <div className="space-y-3">
+            <p>
+              Normal identifies an NFC tag by its unique ID, not by the data
+              stored inside it.
+            </p>
+            <p>
+              Some high-security tags, like certain bank or transit cards,
+              deliberately use a rotating ID that changes on every scan, for
+              privacy and anti-tracking reasons.
+            </p>
+            <ul className="list-disc list-inside space-y-1.5 pl-1">
+              <li>Their ID is different every time you tap them</li>
+              <li>We can&apos;t confirm it&apos;s the same tag you registered</li>
+              <li>So they can&apos;t be used as a reliable key</li>
+            </ul>
+            <p>
+              Use a tag with a fixed unique ID; AirTags, amiibo, most credit
+              cards and most everyday NFC tags work well. Or use a QR code or
+              barcode as a key instead.
+            </p>
           </div>
         ),
       },
@@ -343,7 +373,8 @@ const faqSections: FAQSection[] = [
                     After this setup, the only ways to disable Normal are:
                     <ul className="list-disc list-inside pl-5 mt-1.5 space-y-1">
                       <li>
-                        Using an NFC or QR key you&apos;ve configured in Normal
+                        Using an NFC, QR, or barcode key you&apos;ve configured
+                        in Normal
                       </li>
                       <li>Resetting your device</li>
                     </ul>
@@ -468,7 +499,7 @@ const faqSections: FAQSection[] = [
             <p>
               <span className="text-white font-medium">Normal </span>takes an
               opt-in approach. Apps you select are blocked by default. To use
-              them, you have to physically scan an NFC tag or QR code
+              them, you have to physically scan an NFC tag, QR code, or barcode
               you&apos;ve placed somewhere intentional.
             </p>
             <ul className="list-disc list-inside space-y-1.5 pl-1">
@@ -494,7 +525,8 @@ const faqSections: FAQSection[] = [
                 Apple&apos;s Screen Time, where you&apos;re asked to confirm
                 each time you exceed a limit. With Normal, selected apps are
                 blocked by default. To use them, you have to physically scan an
-                NFC tag or QR code you&apos;ve placed somewhere intentional.
+                NFC tag, QR code, or barcode you&apos;ve placed somewhere
+                intentional.
               </p>
             </div>
             <div className="space-y-1">
