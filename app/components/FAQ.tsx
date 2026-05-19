@@ -60,6 +60,47 @@ function KeyCard({
   );
 }
 
+function MethodAccordion({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="rounded-xl border border-zinc-800/60 bg-zinc-900/60 overflow-hidden">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between gap-4 p-4 text-left cursor-pointer"
+      >
+        <span className="font-medium text-sm text-white">{title}</span>
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.25, ease: "easeInOut" }}
+          className="shrink-0"
+        >
+          <ChevronDown size={16} className="text-zinc-500" />
+        </motion.span>
+      </button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="px-4 pb-4 text-sm text-zinc-400 leading-relaxed">
+              {children}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 interface FAQEntry {
   question: string;
   answer: ReactNode;
@@ -75,12 +116,12 @@ const faqSections: FAQSection[] = [
     title: "Getting Started & Setup",
     entries: [
       {
-        question: "What NFC tags and QR codes can I use?",
+        question: "What NFC tags, QR codes, and barcodes can I use?",
         answer: (
           <div className="space-y-4">
             <p>
-              Just about any NFC tag or QR code can be a key. Here are some
-              examples and tips on where to keep them.
+              Just about any NFC tag, QR code, or barcode can be a key. Here are
+              some examples and tips on where to keep them.
             </p>
 
             <div className="flex items-start gap-3 rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-sm">
@@ -89,7 +130,7 @@ const faqSections: FAQSection[] = [
                 <p className="font-semibold text-blue-300">Using an iPad?</p>
                 <p className="mt-1 text-blue-100/80">
                   This device can&apos;t scan NFC, so NFC tags won&apos;t work
-                  here. Use a QR code instead.
+                  here. Use a QR code or barcode instead.
                 </p>
               </div>
             </div>
@@ -97,8 +138,8 @@ const faqSections: FAQSection[] = [
             <div className="space-y-4">
               <KeyCard icon={Nfc} title="NFC tag examples">
                 <KeyFeature icon={Tag}>
-                  Almost any NFC tag works. AirTags, transit cards, amiibo, and
-                  even passports all have NFC chips you can use.
+                  Almost any NFC tag works. AirTags, amiibo, and even credit
+                  cards have NFC chips you can use.
                 </KeyFeature>
                 <KeyFeature icon={ShoppingCart}>
                   You can also buy packs of blank NFC tags online for very
@@ -111,21 +152,25 @@ const faqSections: FAQSection[] = [
                 </KeyFeature>
               </KeyCard>
 
-              <KeyCard icon={QrCode} title="QR code examples">
+              <KeyCard icon={QrCode} title="QR code or barcode examples">
                 <KeyFeature icon={FileText}>
-                  Any QR code works. You can print one on paper, put it on a
-                  sticker, or show it on a second device&apos;s screen.
+                  Any QR code or barcode works, even a product barcode off a
+                  snack wrapper. Print one on paper, put it on a sticker, or
+                  show it on a second device&apos;s screen.
                 </KeyFeature>
                 <KeyFeature icon={RefreshCw}>
-                  Normal reads the value inside the QR code. Use something you
-                  can recreate later if you lose it, or make it random so
-                  it&apos;s hard to reproduce.
+                  Normal reads the value inside the QR code or barcode. Use
+                  something you can recreate later if you lose it, or make it
+                  random so it&apos;s hard to reproduce.
                 </KeyFeature>
                 <div className="pt-1">
                   <p className="text-white font-medium text-sm mb-1.5">
-                    Generating one
+                    Getting one
                   </p>
                   <ul className="list-disc list-inside space-y-1.5 pl-1">
+                    <li>
+                      Any product barcode, like one off a snack wrapper or book
+                    </li>
                     <li>Any free &quot;QR code generator&quot; website</li>
                     <li>
                       The Shortcuts app&apos;s &quot;Generate QR Code&quot;
@@ -152,6 +197,34 @@ const faqSections: FAQSection[] = [
                 </p>
               </KeyCard>
             </div>
+          </div>
+        ),
+      },
+      {
+        question: "Are any NFC tags not supported?",
+        answer: (
+          <div className="space-y-3">
+            <p>
+              Normal identifies an NFC tag by its unique ID, not by the data
+              stored inside it.
+            </p>
+            <p>
+              Some high-security tags, like certain bank or transit cards,
+              deliberately use a rotating ID that changes on every scan, for
+              privacy and anti-tracking reasons.
+            </p>
+            <ul className="list-disc list-inside space-y-1.5 pl-1">
+              <li>Their ID is different every time you tap them</li>
+              <li>
+                We can&apos;t confirm it&apos;s the same tag you registered
+              </li>
+              <li>So they can&apos;t be used as a reliable key</li>
+            </ul>
+            <p>
+              Use a tag with a fixed unique ID; AirTags, amiibo, most credit
+              cards and most everyday NFC tags work well. Or use a QR code or
+              barcode as a key instead.
+            </p>
           </div>
         ),
       },
@@ -213,8 +286,8 @@ const faqSections: FAQSection[] = [
         answer: (
           <div className="space-y-4">
             <p>
-              Yes! Fixing the Settings bypass is straightforward using
-              Apple&apos;s Shortcuts app.
+              Yes. There are two ways to close the Settings bypass. Pick the one
+              that fits how strict you want to be.
             </p>
 
             <div className="rounded-xl border border-orange-500/30 bg-orange-500/10 p-4 text-sm">
@@ -232,139 +305,257 @@ const faqSections: FAQSection[] = [
               </p>
             </div>
 
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <p className="text-white font-medium text-sm">
-                  Step 1: Create the automation
-                </p>
-                <ol className="list-decimal list-inside space-y-1.5 pl-1">
-                  <li>Open the Shortcuts app</li>
-                  <li>Go to the Automation tab</li>
-                  <li>
-                    Tap the <span className="text-white">+</span> button to
-                    create a new automation
-                  </li>
-                  <li>
-                    Set the trigger to{" "}
-                    <span className="text-white">
-                      &quot;When Settings is closed&quot;
-                    </span>
-                  </li>
-                  <li>
-                    Set the action to{" "}
-                    <span className="text-white">
-                      &quot;Go to Home Screen&quot;
-                    </span>
-                  </li>
-                </ol>
-                <div className="grid grid-cols-2 gap-3 mt-3">
-                  <div className="rounded-xl overflow-hidden border border-zinc-800/60">
-                    <Image
-                      src="/IMG_2503.PNG"
-                      alt="Shortcuts Automation tab showing the completed automation"
-                      width={400}
-                      height={870}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                  <div className="rounded-xl overflow-hidden border border-zinc-800/60">
-                    <Image
-                      src="/IMG_2504.PNG"
-                      alt="Automation detail: When Settings is closed, Go to Home Screen"
-                      width={400}
-                      height={870}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                </div>
-              </div>
+            <div className="space-y-3">
+              <MethodAccordion title="Method 1: Shortcuts automation">
+                <div className="space-y-6 pt-2">
+                  <p>
+                    Use Apple&apos;s Shortcuts app to automatically bounce you
+                    out of Settings before you can reach the Screen Time toggle.
+                  </p>
 
-              <div className="space-y-2">
-                <p className="text-white font-medium text-sm">
-                  Step 2: Set it to run automatically
-                </p>
-                <ul className="list-disc list-inside space-y-1.5 pl-1">
-                  <li>
-                    Set the automation to{" "}
-                    <span className="text-white">Run Immediately</span>
-                  </li>
-                  <li>
-                    Turn off <span className="text-white">Notify When Run</span>
-                  </li>
-                </ul>
-                <p className="mt-2">
-                  This ensures it runs immediately every time.
-                </p>
-              </div>
-
-              <div className="space-y-2">
-                <p className="text-white font-medium text-sm">
-                  Step 3: Block the Shortcuts app in Normal
-                </p>
-                <p>
-                  Add Shortcuts to your selected apps in Normal so the
-                  automation itself can&apos;t be easily modified.
-                </p>
-                <div className="max-w-[200px] mt-3">
-                  <div className="rounded-xl overflow-hidden border border-zinc-800/60">
-                    <Image
-                      src="/IMG_2505.PNG"
-                      alt="Selecting the Shortcuts app in Normal's app picker"
-                      width={400}
-                      height={870}
-                      className="w-full h-auto"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <p className="text-white font-medium text-sm">How it works</p>
-                <p>
-                  Screen Time opens authentication in Settings. The automation
-                  detects Settings closing and immediately returns you to the
-                  Home Screen, preventing you from reaching the disable option.
-                </p>
-                <ul className="list-disc list-inside space-y-1.5 pl-1">
-                  <li>You may need to enable Face ID for this to work</li>
-                  <li>You can still access other device settings normally</li>
-                </ul>
-              </div>
-
-              <div className="rounded-xl bg-zinc-800/40 border border-zinc-700/40 p-4 space-y-3">
-                <p className="text-white font-medium text-sm">Important notes</p>
-                <ul className="list-disc list-inside space-y-2">
-                  <li>
-                    When you update your selected apps in Normal, you&apos;ll
-                    need to reselect apps in your schedules and groups due to an
-                    Apple Screen Time limitation.
-                  </li>
-                  <li>
-                    After this setup, the only ways to disable Normal are:
-                    <ul className="list-disc list-inside pl-5 mt-1.5 space-y-1">
+                  <div className="space-y-2">
+                    <p className="text-white font-medium text-sm">
+                      Step 1: Create the automation
+                    </p>
+                    <ol className="list-decimal list-inside space-y-1.5 pl-1">
+                      <li>Open the Shortcuts app</li>
+                      <li>Go to the Automation tab</li>
                       <li>
-                        Using an NFC or QR key you&apos;ve configured in Normal
-                      </li>
-                      <li>Resetting your device</li>
-                    </ul>
-                  </li>
-                  <li>
-                    Unblocking Shortcuts or all apps won&apos;t turn off this
-                    automation. To manage it:
-                    <ul className="list-disc list-inside pl-5 mt-1.5 space-y-1">
-                      <li>
-                        <span className="text-white">To disable:</span> Unblock
-                        Shortcuts, then manually turn off the automation
+                        Tap the <span className="text-white">+</span> button to
+                        create a new automation
                       </li>
                       <li>
-                        <span className="text-white">To re-enable:</span>{" "}
-                        Unblock Shortcuts, turn the automation back on, then
-                        re-block Shortcuts
+                        Set the trigger to{" "}
+                        <span className="text-white">
+                          &quot;When Settings is closed&quot;
+                        </span>
+                      </li>
+                      <li>
+                        Set the action to{" "}
+                        <span className="text-white">
+                          &quot;Go to Home Screen&quot;
+                        </span>
+                      </li>
+                    </ol>
+                    <div className="grid grid-cols-2 gap-3 mt-3">
+                      <div className="rounded-xl overflow-hidden border border-zinc-800/60">
+                        <Image
+                          src="/IMG_2503.PNG"
+                          alt="Shortcuts Automation tab showing the completed automation"
+                          width={400}
+                          height={870}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                      <div className="rounded-xl overflow-hidden border border-zinc-800/60">
+                        <Image
+                          src="/IMG_2504.PNG"
+                          alt="Automation detail: When Settings is closed, Go to Home Screen"
+                          width={400}
+                          height={870}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-white font-medium text-sm">
+                      Step 2: Set it to run automatically
+                    </p>
+                    <ul className="list-disc list-inside space-y-1.5 pl-1">
+                      <li>
+                        Set the automation to{" "}
+                        <span className="text-white">Run Immediately</span>
+                      </li>
+                      <li>
+                        Turn off{" "}
+                        <span className="text-white">Notify When Run</span>
                       </li>
                     </ul>
-                  </li>
-                </ul>
-              </div>
+                    <p className="mt-2">
+                      This ensures it runs immediately every time.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-white font-medium text-sm">
+                      Step 3: Block the Shortcuts app in Normal
+                    </p>
+                    <p>
+                      Add Shortcuts to your selected apps in Normal so the
+                      automation itself can&apos;t be easily modified.
+                    </p>
+                    <div className="max-w-[200px] mt-3">
+                      <div className="rounded-xl overflow-hidden border border-zinc-800/60">
+                        <Image
+                          src="/IMG_2505.PNG"
+                          alt="Selecting the Shortcuts app in Normal's app picker"
+                          width={400}
+                          height={870}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-white font-medium text-sm">
+                      How it works
+                    </p>
+                    <p>
+                      Screen Time opens authentication in Settings. The
+                      automation detects Settings closing and immediately
+                      returns you to the Home Screen, preventing you from
+                      reaching the disable option.
+                    </p>
+                    <ul className="list-disc list-inside space-y-1.5 pl-1">
+                      <li>You may need to enable Face ID for this to work</li>
+                      <li>
+                        You can still access other device settings normally
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="rounded-xl bg-zinc-800/40 border border-zinc-700/40 p-4 space-y-3">
+                    <p className="text-white font-medium text-sm">
+                      Important notes
+                    </p>
+                    <ul className="list-disc list-inside space-y-2">
+                      <li>
+                        When you update your selected apps in Normal,
+                        you&apos;ll need to reselect apps in your schedules and
+                        groups due to an Apple Screen Time limitation.
+                      </li>
+                      <li>
+                        After this setup, the only ways to disable Normal are:
+                        <ul className="list-disc list-inside pl-5 mt-1.5 space-y-1">
+                          <li>
+                            Using an NFC, QR, or barcode key you&apos;ve
+                            configured in Normal
+                          </li>
+                          <li>Resetting your device</li>
+                        </ul>
+                      </li>
+                      <li>
+                        Unblocking Shortcuts or all apps won&apos;t turn off
+                        this automation. To manage it:
+                        <ul className="list-disc list-inside pl-5 mt-1.5 space-y-1">
+                          <li>
+                            <span className="text-white">To disable:</span>{" "}
+                            Unblock Shortcuts, then manually turn off the
+                            automation
+                          </li>
+                          <li>
+                            <span className="text-white">To re-enable:</span>{" "}
+                            Unblock Shortcuts, turn the automation back on, then
+                            re-block Shortcuts
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </MethodAccordion>
+
+              <MethodAccordion title="Method 2: Screen Time passcode">
+                <div className="space-y-4 pt-2">
+                  <p>
+                    Lock Screen Time itself behind a passcode and Apple ID you
+                    don&apos;t know. Without both, the Screen Time toggle
+                    can&apos;t be reached at all.
+                  </p>
+
+                  <div className="space-y-2">
+                    <p className="text-white font-medium text-sm">
+                      How to set it up
+                    </p>
+                    <p>
+                      You have a few options for who enters the passcode and
+                      Apple ID:
+                    </p>
+                    <ul className="list-disc list-inside space-y-1.5 pl-1">
+                      <li>
+                        Hand your phone to a trusted friend so they can enter a
+                        passcode and Apple ID that only they know
+                      </li>
+                      <li>
+                        Use a password manager like{" "}
+                        <span className="text-white">password-locker</span> to
+                        generate a random passcode and Apple ID password you
+                        won&apos;t see
+                      </li>
+                      <li>
+                        Type in a random passcode and Apple ID password yourself
+                        without memorizing them
+                      </li>
+                    </ul>
+                    <p className="text-xs text-zinc-500">
+                      For maximum robustness, use a second Apple ID (a
+                      friend&apos;s, or a fresh one created with a random
+                      password) so neither the passcode nor the recovery path is
+                      reachable from your main account.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="text-white font-medium text-sm">Steps</p>
+                    <ol className="list-decimal list-inside space-y-1.5 pl-1">
+                      <li>
+                        Open <span className="text-white">Screen Time</span> in
+                        Settings
+                      </li>
+                      <li>
+                        Tap{" "}
+                        <span className="text-white">
+                          &quot;Lock Screen Time Settings&quot;
+                        </span>
+                      </li>
+                      <li>
+                        Set a Screen Time passcode (have a friend enter it, use
+                        password-locker, or type a random PIN yourself)
+                      </li>
+                      <li>
+                        Enter an Apple ID for passcode recovery, ideally a
+                        second account you don&apos;t have the password to
+                      </li>
+                      <li>
+                        Done. Screen Time can no longer be disabled without that
+                        passcode or Apple ID login.
+                      </li>
+                    </ol>
+                    <div className="grid grid-cols-3 gap-3 mt-3">
+                      <div className="rounded-xl overflow-hidden border border-zinc-800/60">
+                        <Image
+                          src="/IMG_2600.PNG"
+                          alt="Screen Time settings with the Lock Screen Time Settings button"
+                          width={400}
+                          height={870}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                      <div className="rounded-xl overflow-hidden border border-zinc-800/60">
+                        <Image
+                          src="/IMG_2601.PNG"
+                          alt="Re-enter Screen Time passcode screen"
+                          width={400}
+                          height={870}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                      <div className="rounded-xl overflow-hidden border border-zinc-800/60">
+                        <Image
+                          src="/IMG_2602.PNG"
+                          alt="Screen Time Passcode Recovery prompt asking for an Apple ID"
+                          width={400}
+                          height={870}
+                          className="w-full h-auto"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </MethodAccordion>
             </div>
           </div>
         ),
@@ -468,7 +659,7 @@ const faqSections: FAQSection[] = [
             <p>
               <span className="text-white font-medium">Normal </span>takes an
               opt-in approach. Apps you select are blocked by default. To use
-              them, you have to physically scan an NFC tag or QR code
+              them, you have to physically scan an NFC tag, QR code, or barcode
               you&apos;ve placed somewhere intentional.
             </p>
             <ul className="list-disc list-inside space-y-1.5 pl-1">
@@ -490,11 +681,11 @@ const faqSections: FAQSection[] = [
             <div className="space-y-1">
               <p className="text-white font-medium text-sm">Opt-in approach</p>
               <p>
-                Most screen time apps use an opt-out approach, like
-                Apple&apos;s Screen Time, where you&apos;re asked to confirm
-                each time you exceed a limit. With Normal, selected apps are
-                blocked by default. To use them, you have to physically scan an
-                NFC tag or QR code you&apos;ve placed somewhere intentional.
+                Most screen time apps use an opt-out approach, like Apple&apos;s
+                Screen Time, where you&apos;re asked to confirm each time you
+                exceed a limit. With Normal, selected apps are blocked by
+                default. To use them, you have to physically scan an NFC tag, QR
+                code, or barcode you&apos;ve placed somewhere intentional.
               </p>
             </div>
             <div className="space-y-1">
@@ -508,12 +699,11 @@ const faqSections: FAQSection[] = [
               <p className="text-white font-medium text-sm">Timed unblocks</p>
               <p>
                 Other apps require you to manually reblock when you&apos;re
-                done, and users commonly report forgetting to reblock or
-                falling back into doom-scrolling. With Normal, set a timed
-                unblock for 15 minutes and you&apos;ll be automatically blocked
-                again when it&apos;s up. Going to an event where you need to
-                stay reachable? Unblock for a few hours and Normal handles the
-                rest.
+                done, and users commonly report forgetting to reblock or falling
+                back into doom-scrolling. With Normal, set a timed unblock for
+                15 minutes and you&apos;ll be automatically blocked again when
+                it&apos;s up. Going to an event where you need to stay
+                reachable? Unblock for a few hours and Normal handles the rest.
               </p>
             </div>
             <div className="space-y-1">
@@ -679,9 +869,7 @@ export default function FAQ() {
                     question={faq.question}
                     answer={faq.answer}
                     isOpen={openKey === key}
-                    onToggle={() =>
-                      setOpenKey(openKey === key ? null : key)
-                    }
+                    onToggle={() => setOpenKey(openKey === key ? null : key)}
                   />
                 );
               })}

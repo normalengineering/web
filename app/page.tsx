@@ -3,7 +3,7 @@ import Hero from "./components/Hero";
 import Differentiators from "./components/Differentiators";
 import Features from "./components/Features";
 import Privacy from "./components/Privacy";
-import FAQ from "./components/FAQ";
+import FAQ from "./components/faq";
 import Contact from "./components/Contact";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
