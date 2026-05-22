@@ -183,41 +183,62 @@ export function PreventBypassItem() {
 
               <div className="space-y-2">
                 <p className="text-white font-medium text-sm">
-                  How to set it up
+                  Pick one option for the passcode and Apple ID
                 </p>
-                <p>
-                  You have a few options for who enters the passcode and Apple
-                  ID:
-                </p>
-                <ul className="list-disc list-inside space-y-1.5 pl-1">
-                  <li>
-                    Hand your phone to a trusted friend so they can enter a
-                    passcode and Apple ID that only they know
-                  </li>
-                  <li>
-                    Use a password manager like{" "}
-                    <a
-                      href="https://password-locker.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors"
-                    >
-                      password-locker
-                    </a>{" "}
-                    to generate a random passcode and Apple ID password you
-                    won&apos;t see
-                  </li>
-                  <li>
-                    Type in a random passcode and Apple ID password yourself
-                    without memorizing them
-                  </li>
-                </ul>
                 <p className="text-xs text-zinc-500">
-                  For maximum robustness, use a second Apple ID (a
-                  friend&apos;s, or a fresh one created with a random password)
-                  so neither the passcode nor the recovery path is reachable to
-                  you.
+                  Any of these works on its own; you only need one.
                 </p>
+                <div className="grid gap-2 mt-2">
+                  <div className="rounded-xl bg-zinc-800/40 border border-zinc-700/40 p-3">
+                    <p className="text-white font-medium text-sm">
+                      Option A: Ask a trusted friend
+                    </p>
+                    <p className="mt-1">
+                      Hand them your phone so they can enter a passcode and
+                      Apple ID that only they know.
+                    </p>
+                  </div>
+                  <div className="rounded-xl bg-zinc-800/40 border border-zinc-700/40 p-3">
+                    <p className="text-white font-medium text-sm">
+                      Option B: Use a service like{" "}
+                      <a
+                        href="https://password-locker.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors"
+                      >
+                        password-locker
+                      </a>
+                    </p>
+                    <p className="mt-1">
+                      It provides both a dummy Apple ID and a random passcode.
+                      This can be make near impossible to recover.
+                    </p>
+                  </div>
+                  <div className="rounded-xl bg-zinc-800/40 border border-zinc-700/40 p-3">
+                    <p className="text-white font-medium text-sm">
+                      Option C: Do it yourself
+                    </p>
+                    <p className="mt-1">
+                      Type in a random passcode and Apple ID password yourself
+                      without memorizing them.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3 rounded-xl border border-blue-500/30 bg-blue-500/10 p-3 text-xs">
+                  <div>
+                    <p className="font-semibold text-blue-300">
+                      Why the Apple ID matters
+                    </p>
+                    <p className="mt-1 text-blue-100/80">
+                      Apple lets you reset a forgotten Screen Time passcode
+                      using the Apple ID you registered. If that&apos;s your own
+                      account, you can bypass the lock yourself. Which is why
+                      it's important to use credentials you don&apos;t have easy
+                      access to.
+                    </p>
+                  </div>
+                </div>
               </div>
 
               <div className="space-y-2">
