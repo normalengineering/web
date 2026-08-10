@@ -23,7 +23,7 @@ export default function InAppBrowserHint() {
   return (
     <p className="mt-6 max-w-xs text-sm text-zinc-500">
       Not opening? Tap <span className="text-zinc-300">•••</span> in the corner
-      and choose <span className="text-zinc-300">Open in Safari</span>.
+      and choose <span className="text-zinc-300">Open in external browser</span>.
     </p>
   );
 }

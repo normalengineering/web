@@ -29,7 +29,7 @@ export default function AppStorePage() {
         Normal
       </h1>
       <p className="mt-3 text-zinc-400 max-w-sm">
-        The free, open source app blocker for iOS. Take back your time.
+        The free, open source app blocker for iOS.
       </p>
 
       <a
