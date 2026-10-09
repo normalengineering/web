@@ -21,7 +21,7 @@ const findings: {
       "Two weeks without mobile internet improved sustained attention by about as much as 10 years of age-related decline. 91% of people improved in attention, mental health or well-being.",
     source: "castelo",
     study: "467 people · PNAS Nexus, 2025",
-    normal: "Block Safari and every app to turn your iPhone into a dumbphone.",
+    normal: "Block distracting apps and turn your iPhone into a dumbphone.",
   },
   {
     stat: "Out",
