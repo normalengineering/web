@@ -13,18 +13,19 @@ export function MethodAccordion({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="rounded-xl border border-zinc-800/60 bg-zinc-900/60 overflow-hidden">
+    <div className="border border-line bg-raised">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between gap-4 p-4 text-left cursor-pointer"
+        aria-expanded={isOpen}
+        className="flex w-full cursor-pointer items-center justify-between gap-4 p-4 text-left"
       >
-        <span className="font-medium text-sm text-white">{title}</span>
+        <span className="font-medium text-ink-strong">{title}</span>
         <motion.span
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ duration: 0.25, ease: "easeInOut" }}
           className="shrink-0"
         >
-          <ChevronDown size={16} className="text-zinc-500" />
+          <ChevronDown size={16} className="text-faint" />
         </motion.span>
       </button>
       <AnimatePresence initial={false}>
@@ -34,8 +35,9 @@ export function MethodAccordion({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
           >
-            <div className="px-4 pb-4 text-sm text-zinc-400 leading-relaxed">
+            <div className="border-t border-line px-4 pb-5 text-[15px] leading-relaxed text-muted">
               {children}
             </div>
           </motion.div>

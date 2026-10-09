@@ -1,24 +1,35 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Differentiators from "./components/Differentiators";
+import Cost from "./components/Cost";
+import Research from "./components/Research";
+import Alternatives from "./components/Alternatives";
+import HowItWorks from "./components/HowItWorks";
 import Features from "./components/Features";
-import Privacy from "./components/Privacy";
+import Principles from "./components/Principles";
 import FAQ from "./components/faq";
-import Contact from "./components/Contact";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
+import ScrollRuler from "./components/ScrollRuler";
+import { ScreenTimeProvider } from "./components/ScreenTime";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
+    <div className="min-h-screen overflow-x-clip bg-bg text-ink">
       <Navbar />
-      <Hero />
-      <Differentiators />
-      <Features />
-      <Privacy />
-      <FAQ />
-      <Contact />
-      <CTA />
+      <ScrollRuler />
+      <ScreenTimeProvider>
+        <main>
+          <Hero />
+          <Cost />
+          <Research />
+          <Alternatives />
+          <HowItWorks />
+          <Features />
+          <Principles />
+          <FAQ />
+          <CTA />
+        </main>
+      </ScreenTimeProvider>
       <Footer />
     </div>
   );

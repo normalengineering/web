@@ -8,7 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { Plus } from "lucide-react";
 import { containerVariants, itemVariants } from "../animations";
 
 type FAQContextValue = {
@@ -26,7 +26,7 @@ export function FAQAccordion({ children }: { children: ReactNode }) {
   return (
     <FAQContext.Provider value={{ openId, toggle }}>
       <motion.div
-        className="flex flex-col gap-12"
+        className="flex flex-col gap-14"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -39,21 +39,20 @@ export function FAQAccordion({ children }: { children: ReactNode }) {
 }
 
 export function FAQSection({
+  id,
   title,
   children,
 }: {
+  id?: string;
   title: string;
   children: ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-3">
-      <motion.h3
-        variants={itemVariants}
-        className="text-xs font-semibold uppercase tracking-wider text-zinc-500 px-1 mb-1"
-      >
+    <div id={id} className="scroll-mt-24">
+      <motion.h3 variants={itemVariants} className="label mb-4 text-faint">
         {title}
       </motion.h3>
-      {children}
+      <div className="border-t border-line">{children}</div>
     </div>
   );
 }
@@ -73,22 +72,34 @@ export function FAQItem({
   const isOpen = ctx.openId === id;
 
   return (
-    <motion.div
-      className="rounded-2xl border border-zinc-800/60 bg-zinc-900/40 overflow-hidden"
-      variants={itemVariants}
-    >
+    <motion.div className="border-b border-line" variants={itemVariants}>
       <button
         onClick={() => ctx.toggle(id)}
-        className="w-full flex items-center justify-between gap-4 p-5 sm:p-6 text-left cursor-pointer"
+        aria-expanded={isOpen}
+        className="group flex w-full cursor-pointer items-start justify-between gap-6 py-5 text-left"
       >
-        <span className="font-medium text-sm sm:text-base">{question}</span>
-        <motion.span
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.25, ease: "easeInOut" }}
-          className="shrink-0"
+        <span
+          className={`text-base leading-snug font-medium transition-colors sm:text-lg ${
+            isOpen ? "text-sage" : "text-ink-strong group-hover:text-sage"
+          }`}
         >
-          <ChevronDown size={18} className="text-zinc-500" />
-        </motion.span>
+          {question}
+        </span>
+        <span
+          className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center border transition-colors ${
+            isOpen
+              ? "border-sage text-sage"
+              : "border-line-strong text-muted group-hover:border-sage group-hover:text-sage"
+          }`}
+        >
+          <motion.span
+            animate={{ rotate: isOpen ? 45 : 0 }}
+            transition={{ duration: 0.25, ease: "easeInOut" }}
+            className="flex"
+          >
+            <Plus size={15} />
+          </motion.span>
+        </span>
       </button>
       <AnimatePresence initial={false}>
         {isOpen && (
@@ -97,8 +108,9 @@ export function FAQItem({
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="overflow-hidden"
           >
-            <div className="px-5 sm:px-6 pb-5 sm:pb-6 text-sm text-zinc-400 leading-relaxed">
+            <div className="pr-2 pb-7 text-[15px] leading-relaxed text-muted sm:pr-12">
               {children}
             </div>
           </motion.div>

@@ -6,8 +6,8 @@ export function NoInternetItem() {
       <div className="space-y-3">
         <p>Yes, everything runs locally on your iPhone.</p>
         <p>
-          Normal works fully offline. No internet connection is required to
-          set up or enforce your screen time limits.
+          Normal works fully offline. No internet connection is required to set
+          up or enforce your screen time limits.
         </p>
       </div>
     </FAQItem>

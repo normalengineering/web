@@ -1,23 +1,86 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --foreground: #ffffff;
+  --bg: #111217;
+  --bg-raised: #16171d;
+  --bg-sunken: #0c0d11;
+  --line: rgba(236, 238, 233, 0.09);
+  --line-strong: rgba(236, 238, 233, 0.16);
+  --ink: #eceee9;
+  --ink-strong: #ffffff;
+  --muted: #a1a3ad;
+  --faint: #6b6d78;
+  --sage: #b8d4c8;
+  --sage-deep: #8fb9a7;
+  --brand-ink: #1a1a2e;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-raised: var(--bg-raised);
+  --color-sunken: var(--bg-sunken);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-ink-strong: var(--ink-strong);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-sage: var(--sage);
+  --color-sage-deep: var(--sage-deep);
+  --color-brand-ink: var(--brand-ink);
+  --font-display: var(--font-archivo), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 4rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--sage);
+  color: var(--brand-ink);
+}
+
+.theme-sage {
+  --bg: #b8d4c8;
+  --bg-raised: #c6ddd2;
+  --bg-sunken: #a9c9bb;
+  --line: rgba(26, 26, 46, 0.14);
+  --line-strong: rgba(26, 26, 46, 0.28);
+  --ink: #1a1a2e;
+  --ink-strong: #1a1a2e;
+  --muted: rgba(26, 26, 46, 0.74);
+  --faint: rgba(26, 26, 46, 0.55);
+  --sage: #2d6a52;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+@utility font-display {
+  font-family: var(--font-display);
+  font-variation-settings: "wdth" 116;
+}
+
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@utility bg-grid {
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 40px 40px;
 }

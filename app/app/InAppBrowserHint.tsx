@@ -9,7 +9,8 @@ import { useSyncExternalStore } from "react";
  * even then the in-app browser sometimes swallows it — so when we detect one of
  * these browsers we nudge the user to reopen in Safari, where the tap works.
  */
-const IN_APP_BROWSER = /Instagram|FBAN|FBAV|FB_IAB|Messenger|Threads|Line|Twitter/i;
+const IN_APP_BROWSER =
+  /Instagram|FBAN|FBAV|FB_IAB|Messenger|Threads|Line|Twitter/i;
 
 const subscribe = () => () => {};
 const isInAppBrowser = () => IN_APP_BROWSER.test(navigator.userAgent || "");
@@ -21,9 +22,9 @@ export default function InAppBrowserHint() {
   if (!inApp) return null;
 
   return (
-    <p className="mt-6 max-w-xs text-sm text-zinc-500">
-      Not opening? Tap <span className="text-zinc-300">•••</span> in the corner
-      and choose <span className="text-zinc-300">Open in external browser</span>.
+    <p className="mt-6 max-w-xs text-sm text-faint">
+      Not opening? Tap <span className="text-ink">•••</span> in the corner and
+      choose <span className="text-ink">Open in external browser</span>.
     </p>
   );
 }

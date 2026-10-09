@@ -1,54 +1,65 @@
 import Image from "next/image";
 import { SiGithub, SiApple } from "react-icons/si";
+import { APP_STORE_URL, GITHUB_URL } from "./ui";
+
+const links = [
+  { href: "#why", label: "Why it matters" },
+  { href: "#research", label: "Research" },
+  { href: "#features", label: "Features" },
+  { href: "#faq", label: "FAQ" },
+];
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06] bg-black/70 backdrop-blur-xl">
-      <div className="relative mx-auto max-w-7xl flex items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-2.5">
+    <nav className="sticky top-0 z-50 h-14 border-b border-line bg-bg/90 backdrop-blur-md">
+      <div className="flex h-full items-stretch">
+        <a
+          href="#"
+          className="flex items-center gap-3 border-r border-line px-4 sm:px-6"
+        >
           <Image
             src="/appicon.png"
-            alt="Normal"
-            width={32}
-            height={32}
-            className="rounded-lg"
+            alt=""
+            width={28}
+            height={28}
+            className="rounded-[7px]"
           />
-          <span className="text-lg font-semibold tracking-tight">Normal</span>
+          <span className="font-display text-lg font-semibold tracking-tight text-ink-strong">
+            Normal
+          </span>
         </a>
-        <div className="hidden md:flex items-center gap-8 text-sm text-zinc-400 absolute left-1/2 -translate-x-1/2">
-          <a href="#features" className="hover:text-white transition-colors">
-            Features
-          </a>
-          <a href="#privacy" className="hover:text-white transition-colors">
-            Privacy
-          </a>
-          <a href="#faq" className="hover:text-white transition-colors">
-            FAQ
-          </a>
-          <a href="#contact" className="hover:text-white transition-colors">
-            Contact
-          </a>
+
+        <div className="hidden items-stretch lg:flex">
+          {links.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="label flex items-center px-5 text-muted transition-colors hover:text-ink-strong"
+            >
+              {l.label}
+            </a>
+          ))}
         </div>
-        <div className="flex items-center gap-3">
+
+        <div className="ml-auto flex items-stretch">
           <a
-            href="https://apps.apple.com/app/normal-screen-time-control/id6768861415"
+            href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-black hover:bg-zinc-200 transition-colors"
-          >
-            <SiApple size={16} />
-            <span className="hidden sm:inline">App Store</span>
-            <span className="sm:hidden">App</span>
-          </a>
-          <a
-            href="https://github.com/normalengineering/normal"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-zinc-700 px-4 py-2 text-sm font-medium text-white hover:bg-zinc-900 transition-colors"
+            aria-label="Normal on GitHub"
+            className="label flex items-center gap-2.5 border-l border-line px-4 text-muted transition-colors hover:text-ink-strong sm:px-6"
           >
             <SiGithub size={16} />
             <span className="hidden sm:inline">Star on GitHub</span>
-            <span className="sm:hidden">GitHub</span>
+          </a>
+          <a
+            href={APP_STORE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="label flex items-center gap-2.5 bg-ink-strong px-4 font-medium text-black transition-colors hover:bg-sage sm:px-6"
+          >
+            <SiApple size={15} />
+            App Store
           </a>
         </div>
       </div>
