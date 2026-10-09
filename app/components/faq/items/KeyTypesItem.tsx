@@ -8,29 +8,34 @@ import {
   FileText,
   RefreshCw,
   MapPin,
+  MapPinned,
+  LocateFixed,
+  LocateOff,
+  Smartphone,
   DoorClosed,
   Car,
+  Navigation,
   Users,
 } from "lucide-react";
 import { FAQItem } from "../FAQAccordion";
 import { KeyCard, KeyFeature } from "../primitives";
 
-export function NfcTagsItem() {
+export function KeyTypesItem() {
   return (
-    <FAQItem question="What NFC tags, QR codes, and barcodes can I use?">
+    <FAQItem question="What can I use as a key?">
       <div className="space-y-4">
         <p>
-          Just about any NFC tag, QR code, or barcode can be a key. Here are
-          some examples and tips on where to keep them.
+          Just about any NFC tag, QR code, or barcode can be a key, and so can a
+          location. Here are some examples and tips on where to keep them.
         </p>
 
-        <div className="flex items-start gap-3 rounded-xl border border-blue-500/30 bg-blue-500/10 p-4 text-sm">
-          <Tablet className="h-4 w-4 shrink-0 text-blue-400 mt-0.5" />
+        <div className="flex items-start gap-3 border border-sage/30 bg-sage/[0.06] p-4 text-sm">
+          <Tablet className="h-4 w-4 shrink-0 text-sage mt-0.5" />
           <div>
-            <p className="font-semibold text-blue-300">Using an iPad?</p>
-            <p className="mt-1 text-blue-100/80">
-              This device can&apos;t scan NFC, so NFC tags won&apos;t work here.
-              Use a QR code or barcode instead.
+            <p className="font-semibold text-sage">Using an iPad?</p>
+            <p className="mt-1 text-ink/80">
+              iPads can&apos;t scan NFC, so NFC tags won&apos;t work there. Use
+              a QR code, barcode, or location instead.
             </p>
           </div>
         </div>
@@ -63,9 +68,7 @@ export function NfcTagsItem() {
               so it&apos;s hard to reproduce.
             </KeyFeature>
             <div className="pt-1">
-              <p className="text-white font-medium text-sm mb-1.5">
-                Getting one
-              </p>
+              <p className="mb-1.5 font-medium text-ink-strong">Getting one</p>
               <ul className="list-disc list-inside space-y-1.5 pl-1">
                 <li>
                   Any product barcode, like one off a snack wrapper or book
@@ -78,6 +81,23 @@ export function NfcTagsItem() {
             </div>
           </KeyCard>
 
+          <KeyCard icon={MapPinned} title="Location examples">
+            <KeyFeature icon={LocateFixed} tint="text-green-400">
+              <span className="text-ink-strong">Unblock radius:</span> your key
+              only works inside the areas you choose, like your office or the
+              gym.
+            </KeyFeature>
+            <KeyFeature icon={LocateOff} tint="text-red-400">
+              <span className="text-ink-strong">Block radius:</span> your key
+              only works outside the areas you choose, like home or school, so
+              you can&apos;t unblock while you&apos;re there.
+            </KeyFeature>
+            <KeyFeature icon={Smartphone}>
+              To use a location key, open Normal and unblock. Normal only checks
+              your location at that moment, never in the background.
+            </KeyFeature>
+          </KeyCard>
+
           <KeyCard icon={MapPin} title="Where to place them">
             <KeyFeature icon={DoorClosed} tint="text-orange-400">
               Another room, a closet, or a high shelf
@@ -85,12 +105,16 @@ export function NfcTagsItem() {
             <KeyFeature icon={Car} tint="text-orange-400">
               Your car, office, mailbox or with a trusted person
             </KeyFeature>
+            <KeyFeature icon={Navigation} tint="text-orange-400">
+              For location keys, the park, the office or somewhere random far
+              away
+            </KeyFeature>
             <KeyFeature icon={Users} tint="text-orange-400">
               However difficult you make it to reach is how difficult it will be
               to unblock your device.
             </KeyFeature>
-            <p className="pt-1 text-xs text-zinc-500">
-              Keep a backup key somewhere safe so you&apos;re never fully locked
+            <p className="pt-1 text-xs text-faint">
+              Set up an accessible backup key so you&apos;re never fully locked
               out.
             </p>
           </KeyCard>

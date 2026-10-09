@@ -5,14 +5,14 @@ export function ContactItem() {
     <FAQItem question="How can I contact you?">
       <div className="space-y-3">
         <p>
-          We&apos;d love to hear from you, whether it&apos;s a bug, a
-          feature idea, or a question.
+          We&apos;d love to hear from you, whether it&apos;s a bug, a feature
+          idea, or a question.
         </p>
         <p>
           Email us at{" "}
           <a
             href="mailto:info@normalengineering.org"
-            className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors"
+            className="text-sage underline decoration-sage/40 underline-offset-4 transition-colors hover:decoration-sage"
           >
             info@normalengineering.org
           </a>
@@ -23,7 +23,7 @@ export function ContactItem() {
             href="https://github.com/normalengineering/normal"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors"
+            className="text-sage underline decoration-sage/40 underline-offset-4 transition-colors hover:decoration-sage"
           >
             GitHub repository
           </a>
