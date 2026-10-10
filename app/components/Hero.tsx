@@ -140,18 +140,6 @@ export default function Hero() {
               preload
             />
           </motion.div>
-
-          <motion.div
-            className="absolute right-4 bottom-10 border border-line-strong bg-bg/85 px-4 py-3 backdrop-blur sm:right-10 lg:bottom-16"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-          >
-            <p className="label flex items-center gap-2 text-sage">
-              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-sage" />
-              8 of 8 apps blocked
-            </p>
-          </motion.div>
         </div>
       </div>
     </Frame>
