@@ -83,7 +83,7 @@ export default function Hero() {
           </motion.ul>
 
           <motion.div {...rise(0.36)} className="mt-14">
-            <p className="label mb-5 text-faint">Unblock only with</p>
+            <p className="label mb-5 text-faint">Physical barrier</p>
             <div className="flex flex-wrap gap-5 sm:gap-7">
               {keyTypes.map((k, i) => (
                 <motion.div
