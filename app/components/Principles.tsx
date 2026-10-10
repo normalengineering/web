@@ -9,8 +9,8 @@ import {
   LockKeyhole,
   WifiOff,
 } from "lucide-react";
-import { containerVariants, fadeInUp, itemVariants } from "./animations";
-import { Accent, Frame, SectionLabel } from "./ui";
+import { containerVariants, itemVariants } from "./animations";
+import { Frame, SectionLabel } from "./ui";
 
 const principles = [
   {
@@ -49,18 +49,8 @@ export default function Principles() {
   return (
     <Frame id="principles">
       <SectionLabel index="07" title="Principles" aside="No catch" />
-      <motion.div {...fadeInUp} className="px-4 py-16 sm:px-10 lg:py-24">
-        <h2 className="max-w-3xl font-display text-4xl leading-[1.02] font-semibold tracking-[-0.035em] text-ink-strong sm:text-5xl md:text-6xl">
-          Opt-in, not <Accent>opt-out</Accent>.
-        </h2>
-        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">
-          A few rules every feature in Normal has to follow, now and in every
-          future update.
-        </p>
-      </motion.div>
-
       <motion.div
-        className="grid gap-px border-t border-line bg-line sm:grid-cols-2 lg:grid-cols-3"
+        className="grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-3"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
